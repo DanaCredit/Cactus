@@ -112,7 +112,7 @@ class Cactus private constructor() {
     }
 
     /**
-     * 是否隐藏Android 8.0以上通知栏
+     * 是否隐藏Android 8.0以上，11.0以下通知栏
      *
      * @param hide Boolean
      * @return Cactus

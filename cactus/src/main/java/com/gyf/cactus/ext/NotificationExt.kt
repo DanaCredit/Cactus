@@ -54,7 +54,7 @@ internal fun Service.setNotification(
         startForeground(serviceId, notification)
         //隐藏Notification
         if (hideNotification) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 if (managerCompat.getNotificationChannel(notification.channelId) != null
                     && hideNotificationAfterO
                 ) {

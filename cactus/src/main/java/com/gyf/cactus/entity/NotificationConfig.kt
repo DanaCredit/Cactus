@@ -48,7 +48,7 @@ data class NotificationConfig(
      */
     var largeIconBitmap: Bitmap? = null,
     /**
-     * 是否隐藏 Android O以上通知栏
+     * 是否隐藏 Android O以上通知栏, Android R 以下
      */
     var hideNotificationAfterO: Boolean = false,
     /**

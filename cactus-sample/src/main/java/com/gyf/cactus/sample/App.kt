@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -59,11 +60,13 @@ class App : Application(), CactusCallback {
         super.onCreate()
         context = applicationContext
         //可选，设置通知栏点击事件
+        val flags: Int =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) PendingIntent.FLAG_IMMUTABLE else PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent =
             PendingIntent.getActivity(this, 0, Intent().apply {
                 setClass(this@App, MainActivity::class.java)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            }, PendingIntent.FLAG_UPDATE_CURRENT)
+            }, flags)
         //可选，注册广播监听器
         registerReceiver(MainReceiver(), IntentFilter().apply {
             addAction(Cactus.CACTUS_WORK)

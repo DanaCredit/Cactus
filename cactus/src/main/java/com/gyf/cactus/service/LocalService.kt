@@ -172,13 +172,11 @@ class LocalService : Service(), IBinder.DeathRecipient {
                     Intent.ACTION_SCREEN_OFF -> {
                         // 熄屏，打开1像素Activity
                         log("screen off")
-                        openOnePix()
                         playMusic()
                     }
                     Intent.ACTION_SCREEN_ON -> {
                         //亮屏，关闭1像素Activity
                         log("screen on")
-                        closeOnePix()
                         if (!mCactusConfig.defaultConfig.backgroundMusicEnabled) {
                             pauseMusic()
                         }
@@ -262,27 +260,6 @@ class LocalService : Service(), IBinder.DeathRecipient {
                 Constant.CALLBACKS.forEach {
                     it.onStop()
                 }
-            }
-        }
-    }
-
-    /**
-     * 打开一像素
-     */
-    private fun openOnePix() {
-        if (mCactusConfig.defaultConfig.onePixEnabled) {
-            sMainHandler.postDelayed({ startOnePixActivity() }, 1000)
-        }
-    }
-
-    /**
-     * 关闭一像素
-     */
-    private fun closeOnePix() {
-        mCactusConfig.defaultConfig.apply {
-            if (onePixEnabled) {
-                backBackground()
-                finishOnePix()
             }
         }
     }

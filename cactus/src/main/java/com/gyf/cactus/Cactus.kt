@@ -277,16 +277,6 @@ class Cactus private constructor() {
     }
 
     /**
-     * 是否可以使用一像素，默认可以使用，只有在android p以下可以使用，非必传
-     *
-     * @param enabled Boolean
-     * @return Cactus
-     */
-    fun setOnePixEnabled(enabled: Boolean) = apply {
-        mDefaultConfig.onePixEnabled = enabled
-    }
-
-    /**
      * 是否可以使用WorkManager，默认可以使用，非必传
      *
      * @param enabled Boolean

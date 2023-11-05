@@ -1,29 +1,24 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gyf.cactus">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application>
-        <activity
-            android:name=".pix.OnePixActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:theme="@style/OnePixTheme" />
 
         <service
-            android:name=".service.CactusJobService"
+            android:name="com.gyf.cactus.service.CactusJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service android:name=".service.HideForegroundService" />
+        <service android:name="com.gyf.cactus.service.HideForegroundService" />
         <service
-            android:name=".service.LocalService"
+            android:name="com.gyf.cactus.service.LocalService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".service.RemoteService"
+            android:name="com.gyf.cactus.service.RemoteService"
             android:enabled="true"
             android:exported="true"
             android:process=":cactusRemoteService" />

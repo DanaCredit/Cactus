@@ -3,7 +3,7 @@ package com.gyf.cactus.entity
 import android.content.Intent
 import android.os.Parcel
 import android.os.Parcelable
-import com.gyf.cactus.R
+import com.kuloud.android.cactus.R
 
 /**
  * 默认配置信息
@@ -33,10 +33,6 @@ data class DefaultConfig(
      */
     var musicId: Int = R.raw.cactus,
     /**
-     * 是否可以使用一像素
-     */
-    var onePixEnabled: Boolean = true,
-    /**
      * 是否可以使用WorkManager
      */
     var workerEnabled: Boolean = true,
@@ -62,7 +58,6 @@ data class DefaultConfig(
         1 == source.readInt(),
         1 == source.readInt(),
         1 == source.readInt(),
-        1 == source.readInt(),
         source.readParcelable<Intent>(Intent::class.java.classLoader)
     )
 
@@ -74,7 +69,6 @@ data class DefaultConfig(
         writeInt((if (backgroundMusicEnabled) 1 else 0))
         writeLong(repeatInterval)
         writeInt(musicId)
-        writeInt((if (onePixEnabled) 1 else 0))
         writeInt((if (workerEnabled) 1 else 0))
         writeInt((if (crashRestartEnabled) 1 else 0))
         writeInt((if (workOnMainThread) 1 else 0))

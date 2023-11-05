@@ -2,13 +2,13 @@ package com.gyf.cactus.ext
 
 import android.app.Activity
 import android.app.Application
-import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.*
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
@@ -18,7 +18,6 @@ import com.gyf.cactus.callback.AppBackgroundCallback
 import com.gyf.cactus.entity.CactusConfig
 import com.gyf.cactus.entity.Constant
 import com.gyf.cactus.exception.CactusUncaughtExceptionHandler
-import com.gyf.cactus.pix.OnePixActivity
 import com.gyf.cactus.receiver.StopReceiver
 import com.gyf.cactus.service.CactusJobService
 import com.gyf.cactus.service.LocalService
@@ -239,6 +238,7 @@ internal fun Context.registerCactus(cactusConfig: CactusConfig) {
  * @receiver Context
  * @param cactusConfig CactusConfig
  */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 internal fun Context.registerJobCactus(cactusConfig: CactusConfig) {
     val intent = Intent(this, CactusJobService::class.java)
     intent.putExtra(Constant.CACTUS_CONFIG, cactusConfig)
@@ -373,49 +373,6 @@ private fun Context.handleRestartIntent(cactusConfig: CactusConfig) {
         } else {
             restartIntent = null
         }
-    }
-}
-
-/**
- * 开启一像素界面
- *
- * @receiver Context
- */
-internal fun Context.startOnePixActivity() {
-    if (!isScreenOn && Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
-        mIsForeground = isForeground
-        log("isForeground:$mIsForeground")
-        val onePixIntent = Intent(this, OnePixActivity::class.java)
-        onePixIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        onePixIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        val pendingIntent = PendingIntent.getActivity(this, 0, onePixIntent, 0)
-        try {
-            pendingIntent.send()
-        } catch (e: Exception) {
-        }
-    }
-}
-
-/**
- * 销毁一像素
- */
-internal fun finishOnePix() {
-    mWeakReference?.apply {
-        get()?.apply {
-            finish()
-        }
-        mWeakReference = null
-    }
-}
-
-/**
- * 保存一像素，方便销毁
- *
- * @receiver OnePixActivity
- */
-internal fun OnePixActivity.setOnePix() {
-    if (mWeakReference == null) {
-        mWeakReference = WeakReference(this)
     }
 }
 

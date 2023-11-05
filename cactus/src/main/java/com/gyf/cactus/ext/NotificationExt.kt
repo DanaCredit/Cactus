@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.gyf.cactus.R
+import com.kuloud.android.cactus.R
 import com.gyf.cactus.entity.Constant
 import com.gyf.cactus.entity.NotificationConfig
 import com.gyf.cactus.exception.CactusException

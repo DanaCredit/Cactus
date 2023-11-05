@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Handler
 import com.gyf.cactus.Cactus
 import com.gyf.cactus.ext.sMainHandler
-import com.gyf.cactus.pix.OnePixActivity
 import java.lang.ref.WeakReference
 
 /**
@@ -56,16 +55,12 @@ class AppBackgroundCallback @JvmOverloads constructor(
     }
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        if (activity !is OnePixActivity) {
-            mContext = WeakReference(activity)
-        }
+        mContext = WeakReference(activity)
     }
 
     override fun onActivityStarted(activity: Activity) {
-        if (activity !is OnePixActivity) {
-            mFrontActivityCount++
-            post()
-        }
+        mFrontActivityCount++
+        post()
     }
 
     override fun onActivityResumed(activity: Activity) {
@@ -75,10 +70,8 @@ class AppBackgroundCallback @JvmOverloads constructor(
     }
 
     override fun onActivityStopped(activity: Activity) {
-        if (activity !is OnePixActivity) {
-            mFrontActivityCount--
-            post()
-        }
+        mFrontActivityCount--
+        post()
     }
 
     override fun onActivityDestroyed(activity: Activity) {

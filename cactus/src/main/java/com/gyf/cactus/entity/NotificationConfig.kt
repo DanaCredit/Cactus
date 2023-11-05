@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 import android.widget.RemoteViews
-import com.gyf.cactus.R
+import com.kuloud.android.cactus.R
 
 /**
  * 通知栏信息

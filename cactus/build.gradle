@@ -10,7 +10,7 @@ android {
     buildToolsVersion "33.0.1"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 33
     }
 
@@ -54,7 +54,7 @@ dependencies {
 ext {
     releaseArtifact = 'cactus'
     releaseDescription = 'cactus-fixed'
-    releaseVersion = '0.0.1'
+    releaseVersion = '0.0.2'
 }
 
 apply from: rootProject.file('gradle/release.gradle')

@@ -113,3 +113,5 @@ fabric.properties
 gradle/wrapper/gradle-wrapper.jar
 /cactus-sample/release/cactus-sample-release.apk
 /cactus-sample/release/output.json
+
+gradle.properties

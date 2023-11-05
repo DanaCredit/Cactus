@@ -1,17 +1,16 @@
 
 ## 使用 
 > android studio
- - androidx
-   ```groovy
-   implementation 'io.github.kuloud:cactus:0.0.1'
-   ```
+
+```groovy
+implementation 'io.github.kuloud:cactus:0.0.1'
+```
 
 
 ## 用法（具体api请参考api说明）
-   ```   
-#### kotlin用法
 
 - 注册 
+   
    ```kotlin
     cactus {
        setPendingIntent(pendingIntent)

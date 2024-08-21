@@ -11,8 +11,13 @@
 
         <service
             android:name="com.gyf.cactus.service.CactusJobService"
+            android:enabled="true"
+            android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service android:name="com.gyf.cactus.service.HideForegroundService" />
+        <service
+            android:name="com.gyf.cactus.service.HideForegroundService"
+            android:enabled="true"
+            android:exported="true" />
         <service
             android:name="com.gyf.cactus.service.LocalService"
             android:enabled="true"

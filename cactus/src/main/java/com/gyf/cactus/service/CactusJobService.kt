@@ -18,7 +18,6 @@ import com.gyf.cactus.ext.*
  * @author geyifeng
  * @date 2019-08-30 13:03
  */
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 class CactusJobService : JobService() {
 
     private lateinit var mJobScheduler: JobScheduler

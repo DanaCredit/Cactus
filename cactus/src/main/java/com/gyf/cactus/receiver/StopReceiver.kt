@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import com.gyf.cactus.entity.Constant
-import com.gyf.cactus.ext.mainPid
 
 /**
  * 注销服务监听

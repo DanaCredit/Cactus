@@ -27,22 +27,6 @@ internal val Context.isScreenOn
     }
 
 /**
- * 获得主进程的pid
- */
-internal val Context.mainPid
-    get() = run {
-        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        var pid = Process.myPid()
-        activityManager.runningAppProcesses?.forEach {
-            if (it.processName == packageName) {
-                pid = it.pid
-                return@forEach
-            }
-        }
-        pid
-    }
-
-/**
  * 是否主进程
  */
 internal val Context.isMain
